@@ -6,6 +6,7 @@ function route($method, $urlData, $formData) {
   
   // POST /register
   if ($method === 'GET' || $method === 'POST' && empty($urlData)) {
+    //TODO: все что снизу, про сесии, оно не нужно фактически, это работает внутри JS
 
     include_once './functions/response.php';
 
@@ -16,19 +17,8 @@ function route($method, $urlData, $formData) {
     // setcookie('token', null, -1, '/');
 
     response(200, ["data" => ["message" => "Logout"]]);
-
-    // header('Location: /index.html');
-    
-    
     return;
   }
-
   // Возвращаем ошибку
   response(422, ["errors" => ["ощибка метода"]]);
-
 }
-
-
-
-
-

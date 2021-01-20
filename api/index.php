@@ -39,14 +39,8 @@ if (!empty($router)){
     echo "<div style='display:flex;justify-content:center;align-items:center;flex-direction:column;width:100%;height:100%;'>
           <h1><strong>404 Error</strong></h1><br>" . $e->getMessage() . "</div>";
     die();
+  }
 }
-
-
-
-}
-
-
-
 
 // Получение данных из тела запроса
 function getFormData($method) {

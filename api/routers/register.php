@@ -7,21 +7,20 @@ function route($method, $urlData, $formData) {
   // POST /register
   if ($method === 'POST' && empty($urlData)) {
 
-    
-
     require_once './connect_db.php';
     require_once './functions/response.php';
     
     $POST = json_decode(file_get_contents('php://input'), TRUE);
     
-
     if (isset($POST)) {
 
       $first_name = trim(htmlspecialchars($POST['first_name']));
       $last_name = trim(htmlspecialchars($POST['last_name']));
       $phone = trim(htmlspecialchars($POST['phone']));
       $password = trim(htmlspecialchars($POST['password']));
-      // $repeat_password = trim(htmlspecialchars($POST['repeat_password']));
+     /*  //мы должны проверять правильность пароля, но по заданию нужно из JS
+      $repeat_password = trim(htmlspecialchars($POST['repeat_password']));
+       */
       $document_number = trim(htmlspecialchars($POST['document_number']));
       // setcookie('test', $phone, time() + 4323042);
       $errors = [
@@ -43,13 +42,14 @@ function route($method, $urlData, $formData) {
           exit();
           
         }
-        //  elseif ($password !== $repeat_password) {
+         /* //нет надобности проверять пароль из php
+          elseif ($password !== $repeat_password) {
           
-        //   $errors["error"]["errors"]["repeat_password"] = "Повторный пароль невереный";
-        //   response(422, $errors);
-        //   exit();
+          $errors["error"]["errors"]["repeat_password"] = "Повторный пароль невереный";
+          response(422, $errors);
+          exit();
           
-        // }
+        } */
         
         //проверяем наличие такого номера и паспорта в базе
         $check_users = mysqli_query($db, "SELECT * FROM `users` WHERE `phone` = '$phone' OR `document_number` = '$document_number'");
@@ -71,18 +71,7 @@ function route($method, $urlData, $formData) {
           "INSERT INTO `users` ( `first_name`, `last_name`, `phone`, `password`, `document_number`, `api_token`)
         VALUES ('$first_name', '$last_name', '$phone', '$password', '$document_number', '$token') "
         );
-        
-        // Здесь аутентификация не нужна
-        /* $response = [
-          "data" => [
-            "message" => "Registration succes",
-            "token" => $token,
-          ],
-        ];
-        
-        setcookie('token', $token, strtotime("+30 days"));
-        response(204, $response); */
-        
+        //отдаем, что успешно зарегали
         response(204);
 
       }
@@ -98,18 +87,13 @@ function route($method, $urlData, $formData) {
       ];
 
       response(422, $errors);
-
       exit();
     }
 
-      
-
     return;
   }
-
   // Возвращаем ошибку
   response(422, ["errors" => ["ошибка метода"]]);
-
 }
 
 

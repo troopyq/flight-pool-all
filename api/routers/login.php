@@ -115,18 +115,8 @@ function route($method, $urlData, $formData) {
       exit();
     }
 
-
-      
-
     return;
   }
-
   // Возвращаем ошибку
   response(422, ["errors" => ["ощибка метода"]]);
-
 }
-
-
-
-
-

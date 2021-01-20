@@ -18,7 +18,7 @@ function route($method, $urlData, $formData) {
         ]
       ]
         ];
-    
+    //обязательные поля дожны присутствовать
     if (isset($_GET) && isset($_GET["from"]) && isset($_GET["to"]) && isset($_GET["date1"]) && isset($_GET["passengers"])){
       
     
@@ -29,7 +29,8 @@ function route($method, $urlData, $formData) {
       $date1 = $query['date1'];
       $date2 = $query['date2'];
       $passengers = (int) $query['passengers'];
-    
+      
+      //выставляем сегодняшнюю дату
       if (!isset($date1)){
         $date1 = date("Y-m-d");  
       }
@@ -55,7 +56,7 @@ function route($method, $urlData, $formData) {
         ];
         response(422, $err);
       }
-    
+      //если есть обратная дата, ищем обратный рейс
       if (isset($date2)){
         // var_dump($db);
         $back_check = mysqli_query($db, 
@@ -87,7 +88,7 @@ function route($method, $urlData, $formData) {
                    OR
                   `to`.`iata` LIKE '%".$from."%')");
       }
-       
+      //ищем рейс в ТУДА
       $search_check = mysqli_query($db, 
       "SELECT `flights`.`id` as f_id,
                       `flight_code`,
@@ -118,7 +119,7 @@ function route($method, $urlData, $formData) {
                 `to`.`iata` LIKE '%".$to."%')
       ");
       
-    
+      
       if (mysqli_num_rows($search_check) > 0){
         $search = mysqli_fetch_all($search_check, MYSQLI_ASSOC);
         $response = [];
@@ -153,11 +154,10 @@ function route($method, $urlData, $formData) {
   response(422, ["errors" => ["ощибка метода"]]);
 
 }
-
+//какая то функция, которая из сырых данных делает ассоциативный маассив 
 function addResponse($array, $res, $where_to, $date, $from, $to, $pass_amount){
-  // global $db;
   $db = db();
-
+  //смотрим, есть ли бронь на этот рейс, если есть, будем смотреть оставшиеся места
   $free_check = mysqli_query($db,
     "SELECT
       `from`.`flight_code` as `flight_from`,
@@ -208,8 +208,9 @@ function addResponse($array, $res, $where_to, $date, $from, $to, $pass_amount){
           break;
       }
   }
-  
+  // максимальное количество мест в самолете, от него и считаем сколько вместится пассажиров
   $availability = 56;
+  //какая то непонятная логика, которая будет считать оставшиеся места
   if ($where_to == 'to'){
     foreach ($free as $obj) {
       foreach ($obj as $key => $val) {
@@ -220,7 +221,8 @@ function addResponse($array, $res, $where_to, $date, $from, $to, $pass_amount){
         }   
       }
     }
-   
+    // FIXME: где то снизу возможна ошибка с условиями
+    // если мест для пассажиров осталось, то формируем ответ
     if ($availability >= $pass_amount){
       $arr["availability"] = $availability;
       $res["data"]["flights_to"][] = $arr;

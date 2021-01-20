@@ -1,5 +1,5 @@
 <?php 
-
+// ответить клиенту
 function response($code = 200, $response = null){
   http_response_code($code);
   if (isset($response)){
@@ -7,7 +7,8 @@ function response($code = 200, $response = null){
     echo $res;
   }
 }
-
+//проверяет на наличие записей в бд
+//получаем запрос от mysqli и возвращаем массив, где первый элемент это данные запроса
 function isAvialable($response){
   if (mysqli_num_rows($response) > 0) {
     $res = mysqli_fetch_all($response, MYSQLI_ASSOC);

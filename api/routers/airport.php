@@ -10,8 +10,8 @@ function route($method, $urlData, $formData) {
   require_once './functions/response.php';
 
   if (isset($_GET)){
-    require_once('./connect_db.php');
-  
+    require_once './connect_db.php';
+    //получаем запрос на аэропорты
     $query = trim(htmlspecialchars($_GET['query']));
 
     $airports_check = mysqli_query($db, 
@@ -20,7 +20,8 @@ function route($method, $urlData, $formData) {
      `name` LIKE '%". $query ."%'
      OR
      `iata` LIKE '%". $query ."%'");
-  
+
+    // если нашлись, перебираем и отдаем их клиенту
     if (mysqli_num_rows($airports_check) > 0){
       $airports = mysqli_fetch_all($airports_check, MYSQLI_ASSOC);
 
@@ -32,18 +33,17 @@ function route($method, $urlData, $formData) {
       response(200, $response);
 
     } else {
+      //если ничего не нашлось
       $response["data"]["items"] = [];
       response(200, $response);
     }
   
   }
-
-    
     return;
   }
 
   // Возвращаем ошибку
-  response(422, ["errors" => ["ощибка метода"]]);
+  response(422, ["errors" => ["ошибка метода"]]);
 
 }
 

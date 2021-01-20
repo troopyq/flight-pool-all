@@ -2,36 +2,31 @@
 
 // Роутер
 function route($method, $urlData, $formData) {
-  // POST /register
+  // POST /user /user/booking
   if ($method === 'GET') {
 
   require_once './functions/response.php';
   require_once './connect_db.php';
   
-
+  //получаем данные о юзере
   $user = getUserDataByToken();
   
+  // если вторым запросом идет бронирование, то выдаем бронирование
   if ($urlData[0] == 'booking'){
     $booking = getUserBooking($user);
-
+    /* FIXME: работает, но в тестовом режиме */
   }
-
-  
-  
-
-    
-  
-  
 
     return;
   }
-
   // Возвращаем ошибку
   response(422, ["errors" => ["ошибка метода"]]);
 
 }
 
+// получение бронирований
 function getUserBooking($user){
+  //подключение к базе данных
   $db = db();
 
   $res = [
@@ -41,23 +36,24 @@ function getUserBooking($user){
     ];
 
   $document_number = $user['document_number'];
-
+  //ищем пассажиров по паспорту
   $check_pass = mysqli_query($db, "SELECT * FROM `passengers` WHERE `document_number` = '$document_number'");
 
   $check_pass = isAvialable($check_pass);
   $pass = $check_pass[0];
   if ($check_pass[1]){
-
+    //если пассажир бронировал 1 или несколько мест, перебираем их, и для каждого смотрим его бронирование
     foreach ($pass as $p => $p_data){
       $booking_id = $p_data['booking_id'];
       $check_booking = mysqli_query($db, "SELECT * FROM `bookings` WHERE `id` = '$booking_id'");
 
       $check_booking = isAvialable($check_booking);
-      $booking = $check_booking[0];
+      $booking = $check_booking[0]; //массив бронирований юзера
 
-      
+      //перебираем все брони и ищем какие пассажиры на них забронированы
       foreach ($booking as $b => $b_data){
         $item = $b_data;
+        //удаляем лишние данные
         unset($item["created_at"]);
         unset($item["updated_at"]);
 
@@ -66,10 +62,12 @@ function getUserBooking($user){
   
         $check_booking2 = isAvialable($check_booking2);
         $booking2 = $check_booking2[0];
-
+        //перебираем пассажиров и  добавляем к брони
         foreach ($booking2 as $bp => $bp_data){
+          //удаляем лишние данные
           unset($bp_data["created_at"]);
           unset($bp_data["updated_at"]);
+          //добавляем пассажира к брони
           $item['passengers'][] = $bp_data;
         }
 
@@ -89,12 +87,13 @@ function getUserBooking($user){
   
 }
 
-
+//получаем данные юзера по http token
+//возвращает объект данных юзера
 function getUserDataByToken(){
   $db = db();
 
-  $headers = getallheaders()['Authorization'] ?? getallheaders()['authorization'];
-  $token = explode(' ', $headers)[1];
+  $headers = getallheaders()['Authorization'] ?? getallheaders()['authorization']; // получаем контент авторизации
+  $token = explode(' ', $headers)[1]; //получаем сам токен
   
   $check_user = mysqli_query($db, "SELECT * FROM `users` WHERE `api_token` = '$token'");
   if (mysqli_num_rows($check_user) > 0) {
@@ -106,7 +105,7 @@ function getUserDataByToken(){
       "phone" => $user["phone"],
       "document_number" => $user["document_number"],
     ];
-
+    //отдаем объект данных
     response(200, $response);
     
     return $response;
