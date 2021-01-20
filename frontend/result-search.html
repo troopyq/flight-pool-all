@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <meta name="viewport" content="width=device-width,
+                                    initial-scale=1,
+                                    maximum-scale=1,
+                                    user-scalable=0,
+                                    shrink-to-fit=no">
+  <title>Результаты поиска</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" href="favicon.ico">
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="container">
+      <div class="header__row">
+        <a href="index.html">
+          <div class="header__logo">
+            <img class="test-0-logo" src="./img/logo.png" alt="">
+            <span>FlightPool</span>
+          </div>
+        </a>
+
+        <div class="header__menu menu">
+          <nav class="menu__nav nav">
+            <ul class="nav__row">
+              <li>
+                <a class="nav__link test-0-nav-1 " href="index.html#promo">Акции</a>
+              </li>
+              <li>
+                <a class="nav__link test-0-nav-2 " href="result-search.html">Поиск</a>
+              </li>
+              <li>
+                <a class="nav__link test-0-nav-3 " href="signin.html">Регистрация на рейс</a>
+              </li>
+              <li>
+                <a class="nav__link test-0-nav-4 " href="profile.html">Личный кабинет</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div> <!-- /.header_row-->
+    </div> <!-- /.container-->
+    <div class="header__title">
+      <div class="container">
+        <h3 class="header__title-text">Результаты поиска</h3>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="search">
+        <h2 class="h">поиск билетов</h2>
+        <form id='flight' action="" method="" class="search__block block">
+          <datalist id="list-search">
+            
+          </datalist>
+
+          <div class="search__cities">
+            <div class="block__elem">
+              <div class="block__elem_blue block__elem-block search__city">
+                <input required class="test-0-fd" type="text" name="from" autocomplete="off" list='list-search'>
+                
+                </div>
+              <div class="block__description">откуда</div>
+            </div>
+
+            <div class="block__elem">
+              <div class="block__elem_blue block__elem-block search__city"><input required class="test-0-fa "
+                  type="text" name="to" autocomplete="off" list='list-search'></div>
+              <div class="block__description">куда</div>
+            </div>
+          </div> <!-- cities -->
+
+          <div class="search__settings">
+            <div class="block__elem">
+              <div class="block__elem_blue block__elem-block search__settings-field"><input class="test-0-fdt"
+                  type="date" name="date1"></div>
+              <div class="block__description">туда</div>
+            </div>
+            <div class="block__elem">
+              <div class="block__elem_blue block__elem-block search__settings-field"><input class="test-0-fat "
+                  type="date" name="date2"></div>
+              <div class="block__description">обратно</div>
+            </div>
+            <div class="block__elem">
+              <div class="block__elem_blue block__elem-block search__settings-field">
+                <input type="number" max="8" min="1" value="1" name="passengers">
+                <!-- <select class="" name="num" id="num">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                </select> -->
+              </div>
+              <div class="block__description">кол-во пассажиров</div>
+
+            </div>
+            <div class="block__elem">
+              <div class="block__elem btn-search">
+                <div class="block__elem_green block__elem-block search__settings-field">
+                  <button class="button-search" class="test-0-fbs " type="submit" >ПОИСК</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </section>
+      <div class="search-result">
+        <!-- <h1 class="search-result__title"><span id="search-from">Откуда</span> - <span class="search-to">Куда</span></h1> -->
+        <!-- <div class="search-result-data"> -->
+          <!-- <div class="search-result__result result">
+            <div class="result__block">
+              <ul>
+                <li>Номер рейса: <span class="info__id">1231</span></li>
+                <li>Воздушное судно: <span class="info__id"> Boing A-1234</span></li>
+                <li>Дата вылета: <span class="info__id">12.03.2020</span></li>
+              </ul>
+            </div>
+            <div class="result__block">
+              <ul>
+                <li>Время вылета: <span class="info__id">13:32</span></li>
+                <li>Время прилета: <span class="info__id">12:43</span></li>
+                <li>Время в пути: <span class="info__id">12:45</span></li>
+              </ul>
+            </div>
+            <div class="result__block">
+              <ul>
+                <li>Вероятность вылета: <span class="info__id result-chance"><span class="info__data">0</span> %</span></li>
+                <li>Стоимость: <span class="info__id result-cust"><span class="info__data">0</span> руб</span> </li>
+                <li><a href=""><button class="btn btn_green">Перейти</button></a></li>
+              </ul>
+            </div>
+          </div> -->
+        <!-- </div> -->
+        
+        <!-- <div class="search__result result">
+          <div class="result__block">
+            <ul>
+              <li>Номер рейса: <span class="info__id">1231</span></li>
+              <li>Воздушное судно: <span class="info__id"> Boing A-1234</span></li>
+              <li>Дата вылета: <span class="info__id">12.03.2020</span></li>
+            </ul>
+          </div>
+          <div class="result__block">
+            <ul>
+              <li>Время вылета: <span class="info__id">13:32</span></li>
+              <li>Время прилета: <span class="info__id">12:43</span></li>
+              <li>Время в пути: <span class="info__id">12:45</span></li>
+            </ul>
+          </div>
+          <div class="result__block">
+            <ul>
+              <li>Вероятность вылета: <span class="info__id result-chance"><span class="info__data">0</span> %</span></li>
+              <li>Стоимость: <span class="info__id result-cust"><span class="info__data">0</span> руб</span> </li>
+              <li><a href=""><button class="btn btn_green">Перейти</button></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="search__result result">
+          <div class="result__block">
+            <ul>
+              <li>Номер рейса: <span class="info__id">1231</span></li>
+              <li>Воздушное судно: <span class="info__id"> Boing A-1234</span></li>
+              <li>Дата вылета: <span class="info__id">12.03.2020</span></li>
+            </ul>
+          </div>
+          <div class="result__block">
+            <ul>
+              <li>Время вылета: <span class="info__id">13:32</span></li>
+              <li>Время прилета: <span class="info__id">12:43</span></li>
+              <li>Время в пути: <span class="info__id">12:45</span></li>
+            </ul>
+          </div>
+          <div class="result__block">
+            <ul>
+              <li>Вероятность вылета: <span class="info__id result-chance"><span class="info__data">0</span> %</span></li>
+              <li>Стоимость: <span class="info__id result-cust"><span class="info__data">0</span> руб</span> </li>
+              <li><a href=""><button class="btn btn_green">Перейти</button></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="search__result result">
+          <div class="result__block">
+            <ul>
+              <li>Номер рейса: <span class="info__id">1231</span></li>
+              <li>Воздушное судно: <span class="info__id"> Boing A-1234</span></li>
+              <li>Дата вылета: <span class="info__id">12.03.2020</span></li>
+            </ul>
+          </div>
+          <div class="result__block">
+            <ul>
+              <li>Время вылета: <span class="info__id">13:32</span></li>
+              <li>Время прилета: <span class="info__id">12:43</span></li>
+              <li>Время в пути: <span class="info__id">12:45</span></li>
+            </ul>
+          </div>
+          <div class="result__block">
+            <ul>
+              <li>Вероятность вылета: <span class="info__id result-chance"><span class="info__data">0</span> %</span></li>
+              <li>Стоимость: <span class="info__id result-cust"><span class="info__data">0</span> руб</span> </li>
+              <li><a href=""><button class="btn btn_green">Перейти</button></a></li>
+            </ul>
+          </div>
+        </div> -->
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer__row">
+        <nav class="menu__nav nav">
+          <ul class="nav__row">
+            <li>
+              <a class="nav__link test-0-nav-1 " href="index.html#promo">Акции</a>
+            </li>
+            <li>
+              <a class="nav__link test-0-nav-2 " href="result-search.html">Поиск</a>
+            </li>
+            <li>
+              <a class="nav__link test-0-nav-3 " href="signin.html">Регистрация на рейс</a>
+            </li>
+            <li>
+              <a class="nav__link test-0-nav-4 " href="profile.html">Личный кабинет</a>
+            </li>
+          </ul>
+        </nav>
+        <a class="telephone" href="tel:8 (800) 100-10-10" class="span">8 (800) 100-10-10</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <script type='module' src="./js/flight.js"></script>
+</body>
+
+</html>

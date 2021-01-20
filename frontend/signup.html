@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <meta name="viewport" content="width=device-width,
+                                    initial-scale=1,
+                                    maximum-scale=1,
+                                    user-scalable=0,
+                                    shrink-to-fit=no">
+  <title>Регистрация</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/sign.css">
+  <link rel="icon" href="favicon.ico">
+</head>
+
+<body class="sign">
+
+  <div class="sign__wrapper">
+    <!-- <img class="sign__bg" src="img/sign_bg.jpg" alt=""> -->
+    <div class="sign__block">
+      <h1>Регистрация</h1>
+      <form id="signup">
+        <input type="text"  autocomplete="none" placeholder="Имя" name="first_name">
+        <input type="text"  autocomplete="none" placeholder="Фамилия" name="last_name">
+        <input type="number"  autocomplete="none" placeholder="Номер документа" name="document_number">
+        <input type="tel"  autocomplete="none" placeholder="Телефон" name="phone">
+        <input type="password"  autocomplete="none" placeholder="Пароль" name="password">
+        <input type="password"  autocomplete="none" placeholder="Повторение пароля" name="repeat_password">
+        <button type="submit">Зарегестрироваться</button>
+      </form>
+      <div class="registr">
+        <a href="signin.html" class="reg">Авторизация</a>
+      </div>
+      <div class="registr">
+        <a href="index.html" class="reg">Главная</a>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script type='module' src="./js/signUp.js"></script>
+
+</body>
+
+</html>

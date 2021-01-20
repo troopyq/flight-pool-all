@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <meta name="viewport" content="width=device-width,
+                                    initial-scale=1,
+                                    maximum-scale=1,
+                                    user-scalable=0,
+                                    shrink-to-fit=no">
+  <title>Авторизация</title>
+  <script type="module">
+    import { checkUser } from './js/func/functions.js';
+    checkUser(null, 'booking');
+  </script>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/sign.css">
+  <link rel="icon" href="favicon.ico">
+</head>
+
+<body class="sign">
+
+  <div class="sign__wrapper">
+    <!-- <img class="sign__bg" src="img/sign_bg.jpg" alt=""> -->
+    <div class="sign__block">
+      <h1>Авторизация</h1>
+      <form id="signin">
+        <input type="tel" required autocomplete="none" placeholder="Телефон" name="phone">
+        <input type="password" required autocomplete="none" placeholder="Пароль" name="password">
+        <button class="" type="submit" >Войти</button>
+      </form>
+      <div class="registr">
+        <a href="signup.html" class="reg">Регистрация</a>
+      </div>
+      <div class="registr">
+        <a href="index.html" class="reg">Главная</a>
+      </div>
+    </div>
+  </div>
+
+  <script type='module' src="./js/signIn.js"></script>
+</body>
+
+</html>

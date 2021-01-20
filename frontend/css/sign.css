@@ -1,0 +1,133 @@
+.sign {
+  overflow: hidden;
+}
+
+.sign::before {
+  content: "";
+  position: absolute;
+  width: 107vw;
+  height: 107vh;
+  background: url("../img/sign_bg.jpg") center center/100% no-repeat;
+  background-size: cover;
+  display: inline-block;
+  overflow: hidden;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: -1;
+  -webkit-filter: blur(5px);
+          filter: blur(5px);
+}
+
+.sign__wrapper {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sign__block {
+  padding: 25px 20px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fff;
+  width: 500px;
+  min-width: 300px;
+  max-width: 500px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 4px 39px rgba(0, 0, 0, 0.28), 0 4px 8px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 4px 39px rgba(0, 0, 0, 0.28), 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.sign__block h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.sign__block .registr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.sign__block .reg {
+  color: #94D8FF;
+  font-size: 1.6rem;
+  -webkit-transition: all 0.15s;
+  transition: all 0.15s;
+  font-weight: 500;
+}
+
+.sign__block .reg:hover {
+  color: #1B89C7;
+  font-size: 1.5rem;
+}
+
+.sign__block form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 250px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sign__block form input {
+  width: 100%;
+  margin: 15px 0;
+  font-size: 1.8rem;
+  border: 2px solid #858585;
+  padding: 5px 8px;
+  border-radius: 5px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.sign__block form input:focus {
+  border-color: #57ED54;
+}
+
+.sign__block form button[type="submit"] {
+  font-size: 1.8rem;
+  display: inline-block;
+  border: 2px solid #57ED54;
+  color: #57ED54;
+  background-color: transparent;
+  border-radius: 5px;
+  font-weight: bold;
+  margin: 15px 0;
+  padding: 5px 8px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.sign__block form button[type="submit"]:hover {
+  background-color: #57ED54;
+  color: white;
+}
+
+.sign__block form button[type="submit"]:active {
+  background-color: #1bdd17;
+  color: white;
+}

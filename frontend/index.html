@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <meta name="viewport" content="width=device-width,
+                                    initial-scale=1,
+                                    maximum-scale=1,
+                                    user-scalable=0,
+                                    shrink-to-fit=no">
+  <title>FlightPool</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" href="favicon.ico">
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="container">
+      <div class="header__row">
+        <a href="index.html">
+          <div class="header__logo">
+            <img class="test-0-logo" src="./img/logo.png" alt="">
+            <span>FlightPool</span>
+          </div>
+        </a>
+
+        <div class="header__menu menu">
+          <nav class="menu__nav nav">
+            <ul class="nav__row">
+              <li>
+                <a class="nav__link test-0-nav-1 " href="index.html#promo">Акции</a>
+              </li>
+              <li>
+                <a class="nav__link test-0-nav-2 " href="result-search.html">Поиск</a>
+              </li>
+              <li>
+                <a class="nav__link test-0-nav-3 " href="signin.html">Регистрация на рейс</a>
+              </li>
+              <li>
+                <a class="nav__link test-0-nav-4 " href="profile.html">Личный кабинет</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div> <!-- /.header_row-->
+    </div> <!-- /.container-->
+  </header>
+
+  <main>
+    <section class="section-1"></section> <!-- секция с самолетом -->
+
+    <div class="container">
+      <section class="section-2">
+        <h2 class="h">Накапливаете бронирования для снижения стоимости</h2>
+        <div class="calc block">
+          <div class="calc__block block__elem">
+            <div class="block__elem-block block__elem_blue"><input type="date"></div>
+            <p class="block__description">ВЫБЕРИТЕ ДАТУ</p>
+          </div>
+          <div class="calc__block block__elem">
+            <div class="block__elem-block block__elem_blue"><input type="number"></div>
+            <p class="block__description">Число бронирований</p>
+          </div>
+          <div class="calc__block block__elem">
+            <div class="block__elem-block block__elem_green"><span></span></div>
+            <p class="block__description">Итоговая стоимость</p>
+          </div>
+          <div class="calc__block block__elem">
+            <div class="block__elem-block block__elem_green"><span></span></div>
+            <p class="block__description">вероятность вылета</p>
+          </div>
+        </div>
+      </section>
+      <!-- /.section-2 -->
+
+      <section id="promo" class="section-3 promo">
+        <h2 class="h">Акции</h2>
+        <div class="promo__row">
+          <div class="promo__block">
+            <div class="promo__main">
+              <h3 class="promo__title">Returning and Changing Your Tickets</h3>
+
+              <p class="promo__text">The pandemic has changed many travelers’ plans, but we know that it will not last
+                forever.</p>
+              <p class="promo__text">Once all of this is over,we will continue exploring this world the way we used to.
+              </p>
+              <p class="promo__text"> Special rules that have been developed for this challenging situation will help
+                you cancel your tripor postpone it until later.</p>
+            </div>
+            <img src="img/promotions/promotion1.jpg" alt="" class="promo__img">
+          </div>
+          <div class="promo__block">
+            <div class="promo__main">
+              <h3 class="promo__title">Best offers</h3>
+              <p class="promo__text">To see again the streets that witnessed so much.
+
+                To hug your beloved ones and look back to see what you’ve come through.
+
+                And to think of new dreams that will be so special!</p>
+            </div>
+            <img src="img/promotions/promotion2.jpg" alt="" class="promo__img">
+          </div>
+          <div class="promo__block">
+            <div class="promo__main">
+              <h3 class="promo__title">See you more often</h3>
+              <p class="promo__text">
+                Since the beginning of January, we have been expanding the geography of flights in Russia so that you
+                can
+                see your loved ones more often.
+
+                Choose our company to fly to where you are always expected.</p>
+            </div>
+            <img src="img/promotions/promotion3.jpg" alt="" class="promo__img">
+          </div>
+          <div class="promo__block">
+            <div class="promo__main">
+              <h3 class="promo__title">Everything is on again</h3>
+              <p class="promo__text">
+                From August 10, we will resume flights to Turkey.
+
+                Flights from Moscow to Antalya will be operated twice
+                a day daily, and flights on the Moscow-Dalaman route will be operated three to seven times a week.</p>
+            </div>
+            <img src="img/promotions/promotion4.jpg" alt="" class="promo__img">
+          </div>
+        </div>
+      </section>
+      <!-- /.section-3 -->
+
+      <section class="section-4 search">
+        <h2 class="h">поиск билетов</h2>
+        <form id="flight" action="" method="" class="search__block block">
+
+          <div class="search__cities">
+            <div class="block__elem">
+              <div class="block__elem_blue block__elem-block search__city"><input required class="test-0-fd" type="text"
+                  name="from"></div>
+              <div class="block__description">откуда</div>
+            </div>
+
+            <div class="block__elem">
+              <div class="block__elem_blue block__elem-block search__city"><input required class="test-0-fa "
+                  type="text" name="to"></div>
+              <div class="block__description">куда</div>
+            </div>
+          </div> <!-- cities -->
+
+          <div class="search__settings">
+            <div class="block__elem">
+              <div class="block__elem_blue block__elem-block search__settings-field"><input class="test-0-fdt"
+                  type="date" name="date1"></div>
+              <div class="block__description">туда</div>
+            </div>
+            <div class="block__elem">
+            <div class="block__elem_blue block__elem-block search__settings-field"><input class="test-0-fat "
+                  type="date" name="date2"></div>
+              <div class="block__description">обратно</div>
+            </div>
+            <div class="block__elem">
+              <div class="block__elem_blue block__elem-block search__settings-field">
+                <input type="number" max="8" min="1" value="1" name="passengers">
+                <!-- <select class="" name="num" id="num">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                </select> -->
+              </div>
+              <div class="block__description">кол-во пассажиров</div>
+
+            </div>
+            <div class="block__elem">
+              <div class="block__elem btn-search">
+                <div class="block__elem_green block__elem-block search__settings-field">
+                  <button class="button-search" class="test-0-fbs " type="submit" >ПОИСК</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </section>
+      <!-- /.section-4 -->
+      <section class="section-5 subscribe">
+        <div class="subscribe__img">
+          <img src="img/subscribe.jpg" alt="">
+        </div>
+        <div class="subscribe__block">
+          <h3 class="subscribe__title">Подписка на закрытые акции</h3>
+          <form action="">
+            <input class="input" type="email" placeholder="Email">
+            <input class="btn btn_green" type="submit" value="Подписаться">
+          </form>
+
+        </div>
+      </section>
+      <!-- /.section-5 -->
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer__row">
+        <nav class="menu__nav nav">
+          <ul class="nav__row">
+            <li>
+              <a class="nav__link test-0-nav-1 " href="index.html#promo">Акции</a>
+            </li>
+            <li>
+              <a class="nav__link test-0-nav-2 " href="result-search.html">Поиск</a>
+            </li>
+            <li>
+              <a class="nav__link test-0-nav-3 " href="signin.html">Регистрация на рейс</a>
+            </li>
+            <li>
+              <a class="nav__link test-0-nav-4 " href="profile.html">Личный кабинет</a>
+            </li>
+          </ul>
+        </nav>
+        <a class="telephone" href="tel:8 (800) 100-10-10" class="span">8 (800) 100-10-10</a>
+      </div>
+
+    </div>
+  </footer>
+<script type='module' src="./js/flight.js"></script>
+</body>
+
+</html>

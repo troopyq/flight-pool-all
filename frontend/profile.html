@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <script type='module' src="./js/isAuth.js"></script>
+  <meta charset="UTF-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <meta name="viewport" content="width=device-width,
+                                    initial-scale=1,
+                                    maximum-scale=1,
+                                    user-scalable=0,
+                                    shrink-to-fit=no">
+  <title>Личный кабинет</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" href="favicon.ico">
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="container">
+      <div class="header__row">
+        <a href="index.html">
+          <div class="header__logo">
+            <img class="test-0-logo" src="./img/logo.png" alt="">
+            <span>FlightPool</span>
+          </div>
+        </a>
+
+        <div class="header__menu menu">
+          <nav class="menu__nav nav">
+            <ul class="nav__row">
+              <li>
+                <a class="nav__link test-0-nav-1 " href="index.html#promo">Акции</a>
+              </li>
+              <li>
+                <a class="nav__link test-0-nav-2 " href="result-search.html">Поиск</a>
+              </li>
+              <li>
+                <a class="nav__link test-0-nav-3 " href="signin.html">Регистрация на рейс</a>
+              </li>
+              <li>
+                <a class="nav__link test-0-nav-4 " href="profile.html">Личный кабинет</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div> <!-- /.header_row-->
+    </div> <!-- /.container-->
+    <div class="header__title">
+      <div class="container">
+        <h3 class="header__title-text">Личный кабинет</h3>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="profile">
+
+        <h2 class="title__info">Информация о пассажире</h2>
+        <div class="profile__block">
+          <div class="profile__info info">
+            <ul>
+              <li>
+                Имя:<span class="info__id" id="pass_first_name"></span>
+              </li>
+              <li>
+                Фамилия:<span class="info__id" id="pass_last-name"></span>
+              </li>
+              <li>
+                Количество полетов:<span class="info__id" id="pass_count-flights"></span>
+              </li>
+            </ul>
+            <button id="logout" class="btn btn_red">Выход</button>
+          </div>
+        </div>
+
+
+
+        <h2 class="title__info">Предстоящие бронирования</h2>
+        <div class="profile__booking">
+          <table>
+            <tr>
+              <th class="s1">Код бронирования</th>
+              <th class="s2">Дата вылета</th>
+              <th class="s2">Время вылета</th>
+              <th class="s2">Время прилета</th>
+              <th class="s4">Название аэропорта вылета</th>
+              <th class="s4">Название аэропорта назначения</th>
+            </tr>
+            <tr>
+              <td>1094</td>
+              <td>12.03.2020</td>
+              <td>12:40</td>
+              <td>15:32</td>
+              <td>Московский аэропорт</td>
+              <td>Курганский аэропорт</td>
+            </tr>
+          </table>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer__row">
+        <nav class="menu__nav nav">
+          <ul class="nav__row">
+            <li>
+              <a class="nav__link test-0-nav-1 " href="index.html#promo">Акции</a>
+            </li>
+            <li>
+              <a class="nav__link test-0-nav-2 " href="result-search.html">Поиск</a>
+            </li>
+            <li>
+              <a class="nav__link test-0-nav-3 " href="signin.html">Регистрация на рейс</a>
+            </li>
+            <li>
+              <a class="nav__link test-0-nav-4 " href="profile.html">Личный кабинет</a>
+            </li>
+          </ul>
+        </nav>
+        <a class="telephone" href="tel:8 (800) 100-10-10" class="span">8 (800) 100-10-10</a>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <script type='module' src="./js/logout.js"></script>
+  <script type='module' src="./js/profile.js"></script>
+
+</body>
+
+</html>

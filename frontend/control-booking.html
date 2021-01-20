@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <meta name="viewport" content="width=device-width,
+                                    initial-scale=1,
+                                    maximum-scale=1,
+                                    user-scalable=0,
+                                    shrink-to-fit=no">
+  <title>Управление бронированием билетов</title>
+  <script type='module' src="./js/isAuth.js"></script>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" href="favicon.ico">
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="container">
+      <div class="header__row">
+        <a href="index.html">
+          <div class="header__logo">
+            <img class="test-0-logo" src="./img/logo.png" alt="">
+            <span>FlightPool</span>
+          </div>
+        </a>
+
+        <div class="header__menu menu">
+          <nav class="menu__nav nav">
+            <ul class="nav__row">
+              <li>
+                <a class="nav__link test-0-nav-1 " href="index.html#promo">Акции</a>
+              </li>
+              <li>
+                <a class="nav__link test-0-nav-2 " href="result-search.html">Поиск</a>
+              </li>
+              <li>
+                <a class="nav__link test-0-nav-3 " href="signin.html">Регистрация на рейс</a>
+              </li>
+              <li>
+                <a class="nav__link test-0-nav-4 " href="profile.html">Личный кабинет</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div> <!-- /.header_row-->
+    </div> <!-- /.container-->
+    <div class="header__title">
+      <div class="container">
+        <h3 class="header__title-text">Управление бронированием</h3>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="profile">
+
+        <h2 class="title__info">Информация о бронировании</h2>
+        <div class="profile__block">
+          <div class="profile__info info">
+            <ul>
+              <li>
+                Код бронирования:<span class="info__id" id="flight_number">123</span>
+              </li>
+              <li>
+                Стоимость бронирования:<span class="info__id" id="departure_city">Немков</span>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+        <h2 class="title__info">Информация о перелете</h2>
+        <div class="profile__block">
+          <div class="profile__info info">
+            <ul class=" border_bottom">
+              <li>
+                Номер рейса:<span class="info__id" id="flight_number">123</span>
+              </li>
+              <li>
+                Воздушное судно:<span class="info__id" id="flight_number">123</span>
+              </li>
+              <li>
+                Название города вылета:<span class="info__id" id="departure_city">Немков</span>
+              </li>
+              <li>
+                Название аэропорта вылета:<span class="info__id" id="departure_airport">0</span>
+              </li>
+              <li>
+                Дата вылета:<span class="info__id" id="departure_date">0</span>
+              </li>
+              <li>
+                Время вылета:<span class="info__id" id="departure_time">0</span>
+              </li>
+              <li>
+                Название города назначения:<span class="info__id" id="destination city">0</span>
+              </li>
+              <li>
+                Название аэропорта назначения:<span class="info__id" id="destination_airport">0</span>
+              </li>
+              <li>
+                Время прилета:<span class="info__id" id="arrival_time">0</span>
+              </li>
+              <li>
+                Время в пути:<span class="info__id" id="arrival_time">0</span>
+              </li>
+              <li>
+                Вероятность вылета:<span class="info__id" id="cost">0</span>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+
+        <h2 class="title__info">Данные о пассажирах</h2>
+        <div class="profile__block">
+          <div class="profile__info info">
+            <ul class="border_bottom">
+              <li>
+                Имя:<span class="info__id" id="cost">0</span>
+              </li>
+              <li>
+                Фамилия:<span class="info__id" id="cost">0</span>
+              </li>
+              <li>
+                Дата рождения:<span class="info__id" id="cost">0</span>
+              </li>
+              <li>
+                Номер документа:<span class="info__id" id="cost">0</span>
+              </li>
+              <li>
+                Место в салоне туда:<span class="info__id" id="cost">0</span>
+              </li>
+              <li>
+                Место в салоне обратно:<span class="info__id" id="cost">0</span>
+              </li>
+
+            </ul>
+
+
+
+            <button class="btn btn_green">Оформить</button>
+
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer__row">
+        <nav class="menu__nav nav">
+          <ul class="nav__row">
+            <li>
+              <a class="nav__link test-0-nav-1 " href="index.html#promo">Акции</a>
+            </li>
+            <li>
+              <a class="nav__link test-0-nav-2 " href="result-search.html">Поиск</a>
+            </li>
+            <li>
+              <a class="nav__link test-0-nav-3 " href="signin.html">Регистрация на рейс</a>
+            </li>
+            <li>
+              <a class="nav__link test-0-nav-4 " href="profile.html">Личный кабинет</a>
+            </li>
+          </ul>
+        </nav>
+        <a class="telephone" href="tel:8 (800) 100-10-10" class="span">8 (800) 100-10-10</a>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+
+</html>
