@@ -68,7 +68,8 @@ function getUserBooking($user){
 
         $flight_to = isAvialable($check_flight_to);
         $flight_back = isAvialable($check_flight_back);
-        
+        response(200, $flight_to);
+
         $f_back = $flight_back[0][0];
         $f_to = $flight_to[0][0];
 
@@ -77,35 +78,11 @@ function getUserBooking($user){
         unset($f_to["cost"]);
         unset($f_back["cost"]);
 
-        $forarr = $f_to;
-        foreach ($forarr as $key => $val) {
-          if (preg_match('/from/', $key)){
-            $forarr['from'][str_replace(['from_','_from'],'',$key)] = $val;
-            $forarr['from']['date'] = $date_from;
-            unset($forarr[$key]);
-          } elseif (preg_match('/to/', $key)){
-            $forarr['to'][str_replace(['to_','_to'],'',$key)] = $val;
-            $forarr['to']['date'] = $date_back;
-            unset($forarr[$key]);
-          }
-        }
+        $forarr = forGroup($f_to, $date_from, $date_back);
         $item['flight'][] = $forarr;
-        // response(200,['to', $f_to]);
-        // response(200,['back', $f_back]);
-        $forarr = $f_back;
-        foreach ($forarr as $key => $val) {
-          if (preg_match('/from/', $key)){
-            $forarr['from'][str_replace(['from_','_from'],'',$key)] = $val;
-            $forarr['from']['date'] = $date_from;
-            unset($forarr[$key]);
-          } elseif (preg_match('/to/', $key)){
-            $forarr['to'][str_replace(['to_','_to'],'',$key)] = $val;
-            $forarr['to']['date'] = $date_back;
-            unset($forarr[$key]);
-          }
-        }
+        $forarr = forGroup($f_back, $date_from, $date_back);
+        $item['flight'][] = $forarr;
 
-        $item['flight'][] = $forarr;
         //перебираем пассажиров и  добавляем к брони
         foreach ($booking2 as $bp => $bp_data){
           //удаляем лишние данные
@@ -156,8 +133,6 @@ function getUserDataByToken(){
     response(200, $response);
     
     return $response;
-
-    exit();
     
   } else {
     $errors["error"]["code"] = 401;
@@ -167,6 +142,7 @@ function getUserDataByToken(){
     response(401, $errors);
     exit();
   }
+
 }
 
 function getFlight($b_data, $dir = 'from'){
@@ -191,4 +167,19 @@ function getFlight($b_data, $dir = 'from'){
             `flights`.`id` = '".$b_data['flight_'.$dir]."'
            
   ");
+}
+
+function forGroup($forarr, $date_from, $date_back){
+  foreach ($forarr as $key => $val) {
+    if (preg_match('/from/', $key)){
+      $forarr['from'][str_replace(['from_','_from'],'',$key)] = $val;
+      $forarr['from']['date'] = $date_from;
+      unset($forarr[$key]);
+    } elseif (preg_match('/to/', $key)){
+      $forarr['to'][str_replace(['to_','_to'],'',$key)] = $val;
+      $forarr['to']['date'] = $date_back;
+      unset($forarr[$key]);
+    }
+  }
+  return $forarr;
 }
