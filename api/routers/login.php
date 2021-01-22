@@ -32,7 +32,7 @@ function route($method, $urlData, $formData) {
     }
 
 
-    $POST = json_decode(file_get_contents('php://input'), TRUE);
+    $POST = json_decode(file_get_contents('php://input'), TRUE) ?? $_POST;
 
 
     if (isset($POST)) {

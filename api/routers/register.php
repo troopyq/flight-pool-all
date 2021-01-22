@@ -10,7 +10,7 @@ function route($method, $urlData, $formData) {
     require_once './connect_db.php';
     require_once './functions/response.php';
     
-    $POST = json_decode(file_get_contents('php://input'), TRUE);
+    $POST = json_decode(file_get_contents('php://input'), TRUE) ?? $_POST;
     
     if (isset($POST)) {
 
