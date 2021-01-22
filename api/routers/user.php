@@ -63,10 +63,12 @@ function getUserBooking($user){
         $check_booking2 = isAvialable($check_booking2);
         $booking2 = $check_booking2[0];
 
-        $check_flight = getFlight($b_data);
+        $check_flight_to = getFlight($b_data, 'from');
+        $check_flight_back = getFlight($b_data, 'back');
 
-        $flight_to = isAvialable($check_flight, 'from');
-        $flight_back = isAvialable($check_flight, 'back');
+        $flight_to = isAvialable($check_flight_to);
+        $flight_back = isAvialable($check_flight_back);
+        
         $f_back = $flight_back[0][0];
         $f_to = $flight_to[0][0];
 
@@ -88,7 +90,8 @@ function getUserBooking($user){
           }
         }
         $item['flight'][] = $forarr;
-        
+        // response(200,['to', $f_to]);
+        // response(200,['back', $f_back]);
         $forarr = $f_back;
         foreach ($forarr as $key => $val) {
           if (preg_match('/from/', $key)){
