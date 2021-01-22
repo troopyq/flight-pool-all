@@ -32,7 +32,6 @@ export function checkUser(pageNotAuth = null, pageAuth = null) {
   }
 }
 
-export function getAirports(params) {}
 
 //рендер результатов поиска
 export function renderSearch() {
@@ -166,7 +165,9 @@ function renderItemsSearch(dataObj) {
   }
 
   render(itemsTo, titleTo, _result);
-  render(itemsBack, titleBack, _result);
+  if (itemsBack.length) {
+    render(itemsBack, titleBack, _result);
+  }
 }
 
 function diffTime(date1, time1, date2, time2) {
@@ -184,7 +185,6 @@ export function profile() {
   let isOk = false;
   const token = sessionStorage.getItem('token') || null;
   let userData = {};
-  console.log(token);
 
   if (!token) location.replace('/frontend/signin.html');
 
@@ -211,7 +211,7 @@ export function profile() {
   if (isOk) {
     return userData;
   } else {
-    // alert('Что-то пошло не так');
+    console.log('Что-то пошло не так');
     return null;
   }
 

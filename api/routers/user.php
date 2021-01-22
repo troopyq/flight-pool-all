@@ -52,16 +52,57 @@ function getUserBooking($user){
 
       //перебираем все брони и ищем какие пассажиры на них забронированы
       foreach ($booking as $b => $b_data){
-        $item = $b_data;
-        //удаляем лишние данные
-        unset($item["created_at"]);
-        unset($item["updated_at"]);
+        $item = [];
+        $item['code'] = $b_data['code'];
+        $date_from = $b_data['date_from'];
+        $date_back = $b_data['date_back'];
 
         $booking_id2 = $b_data['id'];
         $check_booking2 = mysqli_query($db, "SELECT * FROM `passengers` WHERE `booking_id` = '$booking_id2'");
   
         $check_booking2 = isAvialable($check_booking2);
         $booking2 = $check_booking2[0];
+
+        $check_flight = getFlight($b_data);
+
+        $flight_to = isAvialable($check_flight, 'from');
+        $flight_back = isAvialable($check_flight, 'back');
+        $f_back = $flight_back[0][0];
+        $f_to = $flight_to[0][0];
+
+        $item['cost'] = $f_to["cost"];
+
+        unset($f_to["cost"]);
+        unset($f_back["cost"]);
+
+        $forarr = $f_to;
+        foreach ($forarr as $key => $val) {
+          if (preg_match('/from/', $key)){
+            $forarr['from'][str_replace(['from_','_from'],'',$key)] = $val;
+            $forarr['from']['date'] = $date_from;
+            unset($forarr[$key]);
+          } elseif (preg_match('/to/', $key)){
+            $forarr['to'][str_replace(['to_','_to'],'',$key)] = $val;
+            $forarr['to']['date'] = $date_back;
+            unset($forarr[$key]);
+          }
+        }
+        $item['flight'][] = $forarr;
+        
+        $forarr = $f_back;
+        foreach ($forarr as $key => $val) {
+          if (preg_match('/from/', $key)){
+            $forarr['from'][str_replace(['from_','_from'],'',$key)] = $val;
+            $forarr['from']['date'] = $date_from;
+            unset($forarr[$key]);
+          } elseif (preg_match('/to/', $key)){
+            $forarr['to'][str_replace(['to_','_to'],'',$key)] = $val;
+            $forarr['to']['date'] = $date_back;
+            unset($forarr[$key]);
+          }
+        }
+
+        $item['flight'][] = $forarr;
         //перебираем пассажиров и  добавляем к брони
         foreach ($booking2 as $bp => $bp_data){
           //удаляем лишние данные
@@ -71,6 +112,9 @@ function getUserBooking($user){
           $item['passengers'][] = $bp_data;
         }
 
+
+
+        // response(200, $f_to);
         array_push($res['data']['items'], $item);
 
       }
@@ -120,4 +164,28 @@ function getUserDataByToken(){
     response(401, $errors);
     exit();
   }
+}
+
+function getFlight($b_data, $dir = 'from'){
+  $db = db();
+  return mysqli_query($db, 
+  "SELECT `flights`.`id` as f_id,
+                  `flight_code`,
+                  `from`.`city` as from_city,
+                  `from`.`name` as from_name,
+                  `from`.`iata` as from_iata,
+                  `to`.`city` as to_city,
+                  `to`.`name` as to_name,
+                  `to`.`iata` as to_iata,
+                  `time_from`,
+                  `time_to`,
+                  `cost`
+          FROM flights
+            INNER JOIN airports as `from` on from_id = `from`.`id`
+            
+            INNER JOIN airports as `to` on to_id = `to`.`id`
+            WHERE
+            `flights`.`id` = '".$b_data['flight_'.$dir]."'
+           
+  ");
 }

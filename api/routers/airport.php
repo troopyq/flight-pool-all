@@ -15,7 +15,7 @@ function route($method, $urlData, $formData) {
     $query = trim(htmlspecialchars($_GET['query']));
 
     $airports_check = mysqli_query($db, 
-    "SELECT `id`,`name`, `iata` FROM `airports` WHERE `city`  LIKE '%". $query ."%'
+    "SELECT `id`,`name`, `iata`, `city` FROM `airports` WHERE `city`  LIKE '%". $query ."%'
      OR 
      `name` LIKE '%". $query ."%'
      OR
